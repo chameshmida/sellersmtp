@@ -31,10 +31,12 @@ function makeTest(emailToTest) {
                     Array.from(element.classList).forEach(className => {
                         if (className.startsWith('bg-')) {
                             element.classList.remove(className);
+                            element.classList.add('bg-success');
+                            return $('.toast').toast('show'); 
                         }
                     });
                 });
-                document.querySelector('.toast').classList.add('bg-success');
+
 
             } else {
                 document.getElementById('messageResponse').innerHTML = errorMessage;
@@ -45,11 +47,11 @@ function makeTest(emailToTest) {
                     Array.from(element.classList).forEach(className => {
                         if (className.startsWith('bg-')) {
                             element.classList.remove(className);
+                            element.classList.add('bg-danger');
+                            return $('.toast').toast('show'); 
                         }
                     });
                 });
-                document.querySelector('.toast').classList.add('bg-danger');
-                return $('.toast').toast('show');
             }
         })
 
@@ -57,6 +59,7 @@ function makeTest(emailToTest) {
             console.log(error);
         }
     
+        
     } else {
         // Handle the case when emailToTest includes "outlook" or "hotmail" or "Invalid email addresse"
         document.getElementById('messageResponse').innerHTML = catchedMessage;
@@ -67,12 +70,13 @@ function makeTest(emailToTest) {
             Array.from(element.classList).forEach(className => {
                 if (className.startsWith('bg-')) {
                     element.classList.remove(className);
+                    element.classList.add('bg-warning');
+                    return $('.toast').toast('show'); 
                 }
             });
         });
-        document.querySelector('.toast').classList.add('bg-warning');
-        return $('.toast').toast('show');
     } 
+
 
 }
 
