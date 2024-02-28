@@ -22,17 +22,20 @@ function makeTest(emailToTest) {
         })
         .then(response => {
             if (response.status === 200) {
+            // Replace the class attribute with a new one
                 document.getElementById('messageResponse').innerHTML = successMessage;
-                document.querySelector('.toast').classList.replace('bg-success', 'bg-success');
-                document.querySelector('.toast').classList.replace('bg-danger', 'bg-success');
-                document.querySelector('.toast').classList.replace('bg-warning', 'bg-success');
+                //document.querySelector('.toast').classList.replace('bg-success', 'bg-success');
+                //document.querySelector('.toast').classList.replace('bg-danger', 'bg-success');
+                //document.querySelector('.toast').classList.replace('bg-warning', 'bg-success');
+                document.querySelector('.toast').classList.replace(/bg-\w+/, 'bg-success');
                 return $('.toast').toast('show');
 
             } else {
                 document.getElementById('messageResponse').innerHTML = errorMessage;
-                document.querySelector('.toast').classList.replace('bg-success', 'bg-danger');
-            document.querySelector('.toast').classList.replace('bg-danger', 'bg-danger');
-            document.querySelector('.toast').classList.replace('bg-warning', 'bg-danger');
+                //document.querySelector('.toast').classList.replace('bg-success', 'bg-danger');
+                //document.querySelector('.toast').classList.replace('bg-danger', 'bg-danger');
+                //document.querySelector('.toast').classList.replace('bg-warning', 'bg-danger');
+                document.querySelector('.toast').classList.replace(/bg-\w+/, 'bg-danger');
                 return $('.toast').toast('show');
             }
         })
@@ -44,9 +47,10 @@ function makeTest(emailToTest) {
     } else {
         // Handle the case when emailToTest includes "outlook" or "hotmail" or "Invalid email addresse"
         document.getElementById('messageResponse').innerHTML = catchedMessage;
-        document.querySelector('.toast').classList.replace('bg-success', 'bg-warning');
-        document.querySelector('.toast').classList.replace('bg-danger', 'bg-warning');
-        document.querySelector('.toast').classList.replace('bg-warning', 'bg-warning');
+        //document.querySelector('.toast').classList.replace('bg-success', 'bg-warning');
+        //document.querySelector('.toast').classList.replace('bg-danger', 'bg-warning');
+        //document.querySelector('.toast').classList.replace('bg-warning', 'bg-warning');
+        document.querySelector('.toast').classList.replace(/bg-\w+/, 'bg-warning');
         return $('.toast').toast('show');
     } 
 
