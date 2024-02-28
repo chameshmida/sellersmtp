@@ -27,15 +27,28 @@ function makeTest(emailToTest) {
                 //document.querySelector('.toast').classList.replace('bg-success', 'bg-success');
                 //document.querySelector('.toast').classList.replace('bg-danger', 'bg-success');
                 //document.querySelector('.toast').classList.replace('bg-warning', 'bg-success');
-                document.querySelector('.toast').classList.replace(/bg-\w+/, 'bg-success');
-                return $('.toast').toast('show');
+                document.querySelectorAll('.toast').forEach(element => {
+                    Array.from(element.classList).forEach(className => {
+                        if (className.startsWith('bg-')) {
+                            element.classList.remove(className);
+                        }
+                    });
+                });
+                document.querySelector('.toast').classList.add('bg-success');
 
             } else {
                 document.getElementById('messageResponse').innerHTML = errorMessage;
                 //document.querySelector('.toast').classList.replace('bg-success', 'bg-danger');
                 //document.querySelector('.toast').classList.replace('bg-danger', 'bg-danger');
                 //document.querySelector('.toast').classList.replace('bg-warning', 'bg-danger');
-                document.querySelector('.toast').classList.replace(/bg-\w+/, 'bg-danger');
+                document.querySelectorAll('.toast').forEach(element => {
+                    Array.from(element.classList).forEach(className => {
+                        if (className.startsWith('bg-')) {
+                            element.classList.remove(className);
+                        }
+                    });
+                });
+                document.querySelector('.toast').classList.add('bg-danger');
                 return $('.toast').toast('show');
             }
         })
@@ -50,7 +63,14 @@ function makeTest(emailToTest) {
         //document.querySelector('.toast').classList.replace('bg-success', 'bg-warning');
         //document.querySelector('.toast').classList.replace('bg-danger', 'bg-warning');
         //document.querySelector('.toast').classList.replace('bg-warning', 'bg-warning');
-        document.querySelector('.toast').classList.replace(/bg-\w+/, 'bg-warning');
+        document.querySelectorAll('.toast').forEach(element => {
+            Array.from(element.classList).forEach(className => {
+                if (className.startsWith('bg-')) {
+                    element.classList.remove(className);
+                }
+            });
+        });
+        document.querySelector('.toast').classList.add('bg-warning');
         return $('.toast').toast('show');
     } 
 
